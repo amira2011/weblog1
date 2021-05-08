@@ -31,14 +31,14 @@ class Wlog < ApplicationRecord
         #    Log.create! row.to_hash
           items = []
 
-       CSV.foreach(file.path, headers: true) do |row|
+#items = CSV.read(file.path, headers: true)
+    CSV.foreach(file.path, headers: true) do |row|
 
 
-          items << row.to_h
-
-
-          end
-           Wlog.import(items)
+        items << row.to_h
+        puts row
+        end
+        Wlog.import(items)
       end
 
 
