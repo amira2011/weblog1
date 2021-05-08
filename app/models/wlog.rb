@@ -36,7 +36,6 @@ class Wlog < ApplicationRecord
 
 
         items << row.to_h
-        puts row
         end
         Wlog.import(items)
       end
