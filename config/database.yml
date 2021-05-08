@@ -84,6 +84,6 @@ test:
 #
 production:
   <<: *default
-  database: weblog_production
-  username: weblog
-  password: <%= ENV['WEBLOG_DATABASE_PASSWORD'] %>
+  database: <%= ENV['MY_APP_DATABASE_URL'] %>
+ #  username: weblog
+#  password: <%= ENV['WEBLOG_DATABASE_PASSWORD'] %>
