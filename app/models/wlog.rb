@@ -2,10 +2,10 @@ class Wlog < ApplicationRecord
 
   def self.apdex(date, date1)
      hash= {}
-     data= Wlog.group(:Time).where('Time <= ? and Time >= ?', date1, date).select(:Time)
-     data1= Wlog.group(:Time).where('Time <= ? and Time >= ?', date1, date).count
-     data2= Wlog.group(:Time).where('Time <= ? and Time >= ?', date1, date).where("RT <=0.03").count
-     data3= Wlog.group(:Time).where('Time <= ? and Time >= ?', date1, date).where("RT > 0.03 AND RT < 0.12 ").count
+     data= Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date1, date).select(:Time)
+     data1= Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date1, date).count
+     data2= Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" < ?',   0.05).count
+     data3= Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" > ?',   0.01).count
 
 
    data.each do |i|
@@ -33,8 +33,6 @@ class Wlog < ApplicationRecord
 
 #items = CSV.read(file.path, headers: true)
     CSV.foreach(file.path, headers: true) do |row|
-
-
         items << row.to_h
         end
         Wlog.import(items)
