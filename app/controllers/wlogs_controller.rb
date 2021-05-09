@@ -7,7 +7,7 @@ class WlogsController < ApplicationController
             @date = params[:date1]
             date=DateTime.parse(@date)
             date1= date + 20.minutes
-            @data8  =Wlog.where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" > ?',   0.005)
+            @data8  =Wlog.where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" > ?',   3)
             @data  =Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date1, date).count
             @data6= Wlog.group(:Method).where('"Time" <= ? and "Time" >= ?', date1, date).average(:RT)
 
@@ -23,7 +23,7 @@ class WlogsController < ApplicationController
           #@data5=Wlog.where("RT> 5 AND methods='GET'").order("RT DESC").first(10)
           @data6= Wlog.group(:Method).average(:RT)
            @data7= Wlog.group(:Status).count()
-           @data8=Wlog.where('"RT" > ?',   0.005)
+           @data8=Wlog.where('"RT" > ?',   3)
          end
 
   end

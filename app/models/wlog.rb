@@ -5,16 +5,23 @@ class Wlog < ApplicationRecord
      data= Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date1, date).select(:Time)
      data1= Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date1, date).count
      data2= Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" < ?',   0.05).count
-     data3= Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" > ?',   0.01).count
+     data3= Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" < ? and "RT" > ?',   0.2, 0.05).count
 
+     puts data
 
    data.each do |i|
 
      ts=data1[i.Time]
      sc=data2[i.Time]
      tc=data3[i.Time]
-     tc=tc/2
-     ap=sc+tc
+
+
+     if sc==nil
+       sc=0
+     end
+      print "ts ", ts, " sc ", sc, " tc ", tc , "\n"
+      tc=tc.to_f/2
+     ap=sc.to_f+tc.to_f
      ap=ap/ts.to_f
 
      hash[i.Time]=ap
