@@ -46,4 +46,55 @@ class Wlog < ApplicationRecord
       end
 
 
+
+        def self.import2
+
+          batch=[]
+          batch_size=6000
+          puts Benchmark.measure {
+
+          CSV.foreach(("access.log"), liberal_parsing: true, col_sep: " ") do |row|
+            date = DateTime.parse(row[3][1..11]+" "+row[3][13..-1])
+            rt1= row[10].split("\"")
+            rt1= rt1[1].to_f
+
+            u= row[5].split()
+              if u[1]
+                url_1= u[1].split('?')[0]
+              else
+                url_1 ='-'
+              end
+
+            hash= {:IP => row[0], :Time => date, :URL => u[1],
+              :Status => row[6].to_i, :istatus => row[7].to_i, :RT => rt1,
+              :Method => u[0], :URL1 =>url_1
+               }
+
+            batch.push(hash)
+
+            if batch.size== batch_size
+              Wlog.import  batch
+              batch=[]
+            end
+
+
+           end
+           }
+              Wlog.import  batch
+
+
+
+
+
+
+
+
+
+
+
+      end
+
+
+
+
 end
