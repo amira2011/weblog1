@@ -37,6 +37,13 @@ class WlogsController < ApplicationController
    Wlog.import1(params[:file])
    redirect_to wlogs_path, notice: "Logs Added successfully"
  end
+  
+  def import2
+
+    Wlog.import2
+    redirect_to wlogs_path, notice: "Logs Added successfully"
+
+  end
 
 
 
