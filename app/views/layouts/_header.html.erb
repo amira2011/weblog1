@@ -3,10 +3,20 @@
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
- 
+
   <ul class="navbar-nav px-3">
+    <% if  user_signed_in? %>
     <li class="nav-item text-nowrap">
-      <a class="nav-link" href="https://getbootstrap.com/docs/5.0/examples/dashboard/#">Sign out</a>
+        <%= link_to 'Sign Out' , destroy_user_session_path , method: :delete,  class: 'nav-link' %>
     </li>
+    <% else %>
+    <li class="nav-item text-nowrap">
+      <%= link_to 'Register' , new_user_registration_path , class: 'nav-link' %>
+    </li>
+    <li class="nav-item text-nowrap">
+            <%= link_to 'Sign In' , new_user_session_path , class: 'nav-link' %>
+    </li>
+    <% end %>
+
   </ul>
 </header>

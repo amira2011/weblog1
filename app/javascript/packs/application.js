@@ -12,6 +12,7 @@ import "bootstrap"
 import "chartkick/chart.js"
 global.$ = require('jquery')
 
+ 
 
 
 Rails.start()

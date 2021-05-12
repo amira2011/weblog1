@@ -24,8 +24,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'groupdate'
 gem 'activerecord-import'
 gem "chartkick"
-
-
+gem 'devise'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

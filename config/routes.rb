@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'wlogs/home'
   get 'wlogs/index'
   root 'wlogs#index'
