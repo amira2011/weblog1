@@ -14,15 +14,21 @@ class WlogsController < ApplicationController
             @data6= Wlog.group(:Method).where('"Time" <= ? and "Time" >= ?', date1, date).average(:RT)
 
             @data4= Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date1, date).average(:RT)
-          #  @apdex=  Wlog.apdex(date,date1)
+            @apdex=  Wlog.apdex(date,date1)
          else
            date1= Wlog.first.Time
            date2= date1 + 20.minutes
-          # @apdex= Wlog.apdex(date1,date2)
+           @apdex= Wlog.apdex(date1,date2)
+
+         else
+           date1= Wlog.first.Time
+           date2= date1 + 20.minutes
+           @apdex= Wlog.apdex(date1,date2)
+
            @data4= Wlog.group(:Time).where('"RT" > ?',   0.005).count
            @data3 =Wlog.group(:Time).average(:RT)
            @data  =Wlog.group(:Time).count
-          #@data5=Wlog.where("RT> 5 AND methods='GET'").order("RT DESC").first(10)
+          @data5=Wlog.where("RT> 5 AND methods='GET'").order("RT DESC").first(10)
           @data6= Wlog.group(:Method).average(:RT)
            @data7= Wlog.group(:Status).count()
            @data8=Wlog.where('"RT" > ?',   3)
@@ -38,7 +44,8 @@ class WlogsController < ApplicationController
    redirect_to wlogs_path, notice: "Logs Added successfully"
  end
 
-  def import2
+
+   def import2
 
     Wlog.import2
     redirect_to wlogs_path, notice: "Logs Added successfully"
