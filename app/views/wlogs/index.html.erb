@@ -1,0 +1,84 @@
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+
+
+
+
+      </div>
+
+     <div>
+
+       <%= form_with  url: wlogs_index_path, method: :get do |form| %>
+       <div class="field">
+         <%= form.label :date1 %>
+         <%= form.text_field :date1, data: {behavior: "flatpickr"} %>
+       </div>
+       <div class="actions">
+         <%= form.submit %>
+       </div>
+       <% end %>
+
+       </div>
+
+
+
+      <div>
+      <h3 class="text-center">Server Throughput  per Second </h3>
+
+      <%= line_chart @data, xtitle: "Time", ytitle: "No of Request" %>
+      </div>
+      <hr/>
+
+      <div>
+      <h3 class="text-center">Server Apdex Value </h3>
+      <%= line_chart @apdex, xtitle: "Time", ytitle: "Apdex" %>
+
+      </div>
+      <hr/>
+        <div>
+        <h3 class="text-center">RT >3  per Second </h3>
+
+        <%= line_chart @data4, xtitle: "Time", ytitle: "No of Request" %>
+        </div>
+ <div>
+
+        <h3 class="text-center">Average RT For Methods </h3>
+          <%= bar_chart @data6, xtitle: "RT", ytitle: "Method" %>
+
+        </div>
+
+
+
+      <h2>High Response Time</h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>URL</th>
+
+              <th>IP</th>
+                <th>Time</th>
+              <th>RT</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if @data8 %>
+            <% count= 0%>
+            <% @data8.each do |i| %>
+            <tr>
+            <% count= count+1 %>
+            <td> <%=count %> </td>
+            <td> <%= i.URL1 %></td>
+            <td> <%= i.IP %></td>
+              <td> <%= i.Time %></td>
+            <td> <%= i.RT %></td>
+            </tr>
+
+            <%  end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </main>

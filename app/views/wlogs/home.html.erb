@@ -1,0 +1,28 @@
+<h1>Logs#Upload</h1>
+<p>Find me in app/views/welcome/index.html.erb</p>
+
+<%= form_tag import1_wlogs_path, multipart: true   do %>
+  <%= file_field_tag :file    %>
+
+
+  <%= submit_tag "Upload Logs" ,   class: 'btn btn-primary  ' %>
+<% end %>
+
+
+<%= form_tag import2_wlogs_path    do %>
+
+  <%= submit_tag "From Access File" ,   class: 'btn btn-primary  ' %>
+<% end %>
+
+
+
+
+<%= form_with do |form| %>
+<div class="field">
+  <%= form.label :date1 %>
+  <%= form.text_field :date1, data: {behavior: "flatpickr"} %>
+</div>
+<div class="actions">
+  <%= form.submit %>
+</div>
+<% end %>
