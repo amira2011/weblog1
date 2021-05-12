@@ -15,10 +15,7 @@ class WlogsController < ApplicationController
 
             @data4= Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date1, date).average(:RT)
             @apdex=  Wlog.apdex(date,date1)
-         else
-           date1= Wlog.first.Time
-           date2= date1 + 20.minutes
-           @apdex= Wlog.apdex(date1,date2)
+
 
          else
            date1= Wlog.first.Time
@@ -28,7 +25,7 @@ class WlogsController < ApplicationController
            @data4= Wlog.group(:Time).where('"RT" > ?',   0.005).count
            @data3 =Wlog.group(:Time).average(:RT)
            @data  =Wlog.group(:Time).count
-          @data5=Wlog.where("RT> 5 AND methods='GET'").order("RT DESC").first(10)
+        #  @data5=Wlog.where("RT> 5 AND methods='GET'").order("RT DESC").first(10)
           @data6= Wlog.group(:Method).average(:RT)
            @data7= Wlog.group(:Status).count()
            @data8=Wlog.where('"RT" > ?',   3)

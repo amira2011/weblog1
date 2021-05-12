@@ -1,10 +1,7 @@
-<<<<<<< HEAD
-=======
 
 
 
 
->>>>>>> dd92cb936f72c7171e92f23bf903336247b248ca
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Dashboard</h1>
@@ -12,24 +9,18 @@
 
 
 
-<<<<<<< HEAD
-=======
 
 
 
 
-
->>>>>>> dd92cb936f72c7171e92f23bf903336247b248ca
       </div>
 
      <div>
 
-<<<<<<< HEAD
-       <%= form_with  url: wlogs_index_path, method: :get do |form| %>
-=======
-       <%= form_with do |form| %>
->>>>>>> dd92cb936f72c7171e92f23bf903336247b248ca
-       <div class="field">
+
+
+       <%= form_with url:  wlogs_index_path, method: :get do |form| %>
+        <div class="field">
          <%= form.label :date1 %>
          <%= form.text_field :date1, data: {behavior: "flatpickr"} %>
        </div>
@@ -84,10 +75,7 @@
           </thead>
           <tbody>
             <% if @data8 %>
-<<<<<<< HEAD
-=======
 
->>>>>>> dd92cb936f72c7171e92f23bf903336247b248ca
             <% count= 0%>
             <% @data8.each do |i| %>
             <tr>
@@ -100,10 +88,8 @@
             </tr>
 
             <%  end %>
-<<<<<<< HEAD
-=======
 
->>>>>>> dd92cb936f72c7171e92f23bf903336247b248ca
+
             <% end %>
           </tbody>
         </table>
