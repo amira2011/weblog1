@@ -1,7 +1,7 @@
 require_relative "boot"
 
 require "rails/all"
-
+require 'benchmark'
 require 'csv'
 require 'time'
 require 'date'

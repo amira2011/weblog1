@@ -51,7 +51,7 @@ class Wlog < ApplicationRecord
 
           batch=[]
           batch_size=6000
-          puts Benchmark.measure {
+          puts "import",  Benchmark.measure {
 
           CSV.foreach(("access.log"), liberal_parsing: true, col_sep: " ") do |row|
             date = DateTime.parse(row[3][1..11]+" "+row[3][13..-1])
