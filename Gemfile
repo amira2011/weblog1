@@ -25,6 +25,8 @@ gem 'groupdate'
 gem 'activerecord-import'
 gem "chartkick"
 gem 'devise'
+
+gem 'flatpickr'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

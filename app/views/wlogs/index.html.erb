@@ -18,14 +18,16 @@
 
      <div>
 
-            <%= form_tag  wlogs_index_path, method: :get do %>
+       <%= form_with do |form| %>
+       <div class="field">
+         <%= form.label :date1 %>
+         <%= form.text_field :date1, data: {behavior: "flatpickr"} %>
+       </div>
+       <div class="actions">
+         <%= form.submit %>
+       </div>
+       <% end %>
 
-
-             <%= datetime_field_tag :date1, params[:date1], id: 'date1'    %>
-             <%= button_tag type: :submit , class: 'btn btn-success' do %>
-             <%= 'Search' %>
-             <% end %>
-            <% end %>
        </div>
 
 

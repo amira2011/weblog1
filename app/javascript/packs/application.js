@@ -8,13 +8,31 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-import "bootstrap"
-import "chartkick/chart.js"
-global.$ = require('jquery')
 
- 
+
 
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+import "bootstrap"
+import "chartkick/chart.js"
+
+
+import "controllers"
+
+
+import flatpickr from "flatpickr";
+require("flatpickr/dist/flatpickr.css")
+
+
+document.addEventListener("turbolinks:load", () =>{
+flatpickr("[data-behavior='flatpickr']",{
+altInput: true,
+altFormat: "F j, Y",
+enableTime: true,
+dateFormat: "Y-m-d H:i",
+
+})
+})

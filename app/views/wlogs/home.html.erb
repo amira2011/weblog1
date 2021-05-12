@@ -9,4 +9,16 @@
 <% end %>
 
 
- 
+
+
+
+
+<%= form_with do |form| %>
+<div class="field">
+  <%= form.label :date1 %>
+  <%= form.text_field :date1, data: {behavior: "flatpickr"} %>
+</div>
+<div class="actions">
+  <%= form.submit %>
+</div>
+<% end %>
