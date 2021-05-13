@@ -1,4 +1,171 @@
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 fw-bold fs-3">
+      Dashboard
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 fw-bold fs-3">
+  <%= form_with url:  wlogs_index_path, method: :get do |form| %>
+   <div class="field">
+    <%= form.label :date1 %>
+    <%= form.text_field :date1, data: {behavior: "flatpickr"} %>
+
+    <%= form.submit %>
+
+  <% end %>
+</div>
+
+</div>
+</div>
+
+
+
+
+    <div class="row">
+      <div class="col-md-3 mb-3">
+        <div class="card text-white bg-primary h-100">
+          <div class="card-header">Total Requests</div>
+          <div class="card-body">
+
+            <p class="card-text"><%= @total %></p>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-3 mb-3">
+        <div class="card text-white bg-info h-100" >
+        <div class="card-header">Null Requests</div>
+          <div class="card-body">
+            <p class="card-text"><%= @total1 %></p>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-3 mb-3">
+        <div class="card text-white bg-danger h-100" >
+        <div class="card-header">R Time>3</div>
+          <div class="card-body">
+            <p class="card-text"><%= @total2 %></p>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-3 mb-3">
+        <div class="card text-white bg-warning h-100"  >
+          <div class="card-header">Average RT</div>
+          <div class="card-body">
+
+
+              <p class="card-text"><%= @total3 %></p>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="row">
+
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+
+      <div class="card">
+        <div class="card-header">
+
+          Apdex Score
+        </div>
+        <div class="card-body">
+         <%= line_chart @apdex, xtitle: "Time", ytitle: "Apdex" %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+
+      <div class="card">
+        <div class="card-header">
+
+          Server Throughput
+        </div>
+        <div class="card-body">
+
+<%= line_chart @data, xtitle: "Time", ytitle: "No of Request" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          List of RT >3
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table
+                  id="example"
+                  class="table table-striped data-table"
+                  style="width: 100%"
+                >
+                  <thead>
+                    <tr>
+                      <th>Sr. No</th>
+                      <th>URL</th>
+                      <th>IP</th>
+                      <th>Time</th>
+                      <th>RT</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <% if @data8 %>
+                      <% count= 0%>
+                      <% @data8.each do |i| %>
+                      <tr>
+                      <% count= count+1 %>
+                      <td> <%=count %> </td>
+                      <td> <%= i.URL1 %></td>
+                      <td> <%= i.IP %></td>
+                        <td> <%= i.Time %></td>
+                      <td> <%= i.RT %></td>
+                      </tr>
+
+                      <%  end %>
+
+
+                      <% end %>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th>Sr. No</th>
+                      <th>URL</th>
+                      <th>IP</th>
+                      <th>Time</th>
+                      <th>RT</th>
+
+                    </tr>
+                  </tfoot>
+                </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+</div>
+
+
+<% if false %>
+
+
 
 
 
@@ -95,3 +262,5 @@
         </table>
       </div>
     </main>
+
+    <% end %>

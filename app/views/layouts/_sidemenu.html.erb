@@ -1,19 +1,104 @@
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-      <div class="position-sticky pt-3">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href=<%= wlogs_index_path %>>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-              Dashboard
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href=<%= wlogs_home_path %>>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
-              Upload Logs
-            </a>
-          </li>
 
-        </ul>
-      </div>
-    </nav>
+
+
+       <div class="offcanvas offcanvas-start bg-dark text-white sidebar-nav" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+         <div class="offcanvas-header">
+
+           <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+         </div>
+         <div class="offcanvas-body p-0">
+           <nav class="nav-dark">
+             <ul class="navbar-nav">
+               <li>
+                 <div class="text-muted small fw-bold text-uppercase px-3">
+                   CORE
+                 </div>
+               </li>
+               <li>
+                 <a href=<%= wlogs_index_path %> class="nav-link px-3 active text-info">
+                   <span class="me-2">
+                   <i class="bi bi-speedometer2 text-info"></i>
+                   </span> <span>Dashboard</span>
+                 </a>
+               </li>
+               <li class="my-0">
+                 <hr class="dropdown-divider">
+               </li>
+
+               <li>
+                 <div class="text-muted small fw-bold text-uppercase px-3">
+                   Interface
+                 </div>
+               </li>
+
+               <li>
+                 <a
+                   class="nav-link px-3 sidebar-link"
+                   data-bs-toggle="collapse"
+                   href="#layouts"
+                 >
+                   <span class="me-2 text-info"><i class="bi bi-layout-split"></i></span>
+                   <span class="text-info">Graphs</span>
+                   <span class="ms-auto ">
+                     <span  >
+                       <i class="bi bi-chevron-down right-icon"></i>
+                     </span>
+                   </span>
+                 </a>
+                 <div class="collapse" id="layouts">
+                   <ul class="navbar-nav ps-3">
+                     <li>
+                       <a href=<%= wlogs_home_path %> class="nav-link px-3 sidebar-link">
+                         <span class="me-2"
+                           ><i class="bi bi-speedometer2"></i
+                         ></span>
+                         <span>Dashboard</span>
+                       </a>
+                     </li>
+                     <li>
+                       <a href="#" class="nav-link px-3">
+                         <span class="me-2"
+                           ><i class="bi bi-speedometer2"></i
+                         ></span>
+                         <span>Reports</span>
+                       </a>
+                     </li>
+                   </ul>
+                 </div>
+               </li>
+
+
+
+               <li>
+                 <a href="#" class="nav-link px-3">
+                   <span class="me-2"><i class="bi bi-book-fill"></i></span>
+                   <span>Pages</span>
+                 </a>
+               </li>
+               <li class="my-4"><hr class="dropdown-divider bg-light" /></li>
+               <li>
+                 <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
+                   Addons
+                 </div>
+               </li>
+               <li>
+                 <a href="#" class="nav-link px-3">
+                   <span class="me-2"><i class="bi bi-graph-up"></i></span>
+                   <span>Charts</span>
+                 </a>
+               </li>
+               <li>
+                 <a href="#" class="nav-link px-3">
+                   <span class="me-2"><i class="bi bi-table"></i></span>
+                   <span>Tables</span>
+                 </a>
+               </li>
+
+
+
+             </ul>
+
+           </nav>
+
+         </div>
+       </div>

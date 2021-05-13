@@ -9,6 +9,13 @@ class WlogsController < ApplicationController
             @date = params[:date1]
             date=DateTime.parse(@date)
             date1= date + 20.minutes
+            @total=Wlog.where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).count
+            @total1= Wlog.where('"RT" = ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).count
+
+            @total2= Wlog.where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" > ?',   3).count
+            @total3 =Wlog.where('"Time" <= ? and "Time" >= ?', date1, date).average(:RT)
+            @total3 =@total3.ceil(2)
+
 
             @data8  =Wlog.where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" > ?',   3)
             @data  =Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date1, date).count
@@ -26,7 +33,11 @@ class WlogsController < ApplicationController
 
            @apdex= Wlog.apdex(date1,date2)
 
-
+           @total= Wlog.where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date2, date1).count
+           @total1= Wlog.where('"RT" = ?', 0).where('"Time" <= ? and "Time" >= ?', date2, date1).count
+           @total2= Wlog.where('"Time" <= ? and "Time" >= ?', date2, date1).where('"RT" > ?',   3).count
+           @total3 =Wlog.where('"Time" <= ? and "Time" >= ?', date2, date1).average(:RT)
+           @total3 =@total3.ceil(2)
            @data4= Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date2, date1).where('"RT" > ?',   0.005).count
            @data3 =Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date2, date1).average(:RT)
            @data  =Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date2, date1).count

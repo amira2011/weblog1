@@ -2,14 +2,14 @@ class Wlog < ApplicationRecord
 
   def self.apdex(date, date1)
      hash= {}
-     data= Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date1, date).select(:Time)
-     data1= Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date1, date).count
-     data2= Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" < ?',   0.05).count
-     data3= Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" < ? and "RT" > ?',   0.2, 0.05).count
+     data= Wlog.group(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).select(:Time)
+     data1= Wlog.group(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).count
+     data2= Wlog.group(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" < ?',   0.3).count
+     data3= Wlog.group(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" < ? and "RT" > ?',   1.2, 0.3).count
 
      puts data
 
-   data.each do |i|
+    data.each do |i|
 
      ts=data1[i.Time]
      sc=data2[i.Time]
