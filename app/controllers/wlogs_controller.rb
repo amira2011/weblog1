@@ -28,7 +28,7 @@ class WlogsController < ApplicationController
 
 
          else
-           date1= Wlog.first.Time
+           date1= (a = Wlog.first).present? ? a.Time : 1.hour.ago
            date2= date1 + 20.minutes
 
            @apdex= Wlog.apdex(date1,date2)
@@ -37,7 +37,7 @@ class WlogsController < ApplicationController
            @total1= Wlog.where('"RT" = ?', 0).where('"Time" <= ? and "Time" >= ?', date2, date1).count
            @total2= Wlog.where('"Time" <= ? and "Time" >= ?', date2, date1).where('"RT" > ?',   3).count
            @total3 =Wlog.where('"Time" <= ? and "Time" >= ?', date2, date1).average(:RT)
-           @total3 =@total3.ceil(2)
+           @total3 = @total3.to_f.ceil(2)
            @data4= Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date2, date1).where('"RT" > ?',   0.005).count
            @data3 =Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date2, date1).average(:RT)
            @data  =Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date2, date1).count

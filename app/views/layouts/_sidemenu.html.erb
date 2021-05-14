@@ -1,111 +1,79 @@
+<div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">
+                  <span data-feather="home"></span>
+                  Dashboard <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file"></span>
+                  Orders
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="shopping-cart"></span>
+                  Products
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="users"></span>
+                  Customers
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="bar-chart-2"></span>
+                  Reports
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="layers"></span>
+                  Integrations
+                </a>
+              </li>
+            </ul>
 
-
-
-       <div class="offcanvas offcanvas-start bg-dark text-white sidebar-nav" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-         <div class="offcanvas-header">
-
-           <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-         </div>
-         <div class="offcanvas-body p-0">
-           <nav class="nav-dark">
-             <ul class="navbar-nav">
-               <li>
-                 <div class="text-muted small fw-bold text-uppercase px-3">
-                   CORE
-                 </div>
-               </li>
-               <li>
-                 <a href=<%= wlogs_index_path %> class="nav-link px-3 active text-info">
-                   <span class="me-2">
-                   <i class="bi bi-speedometer2 text-info"></i>
-                   </span> <span>Dashboard</span>
-                 </a>
-               </li>
-               <li>
-                 <a href=<%= wlogs_home_path %> class="nav-link px-3 active text-info">
-                   <span class="me-2">
-                   <i class="bi bi-speedometer2 text-info"></i>
-                 </span> <span>Upload Log</span>
-                 </a>
-               </li>
-               <li class="my-0">
-                 <hr class="dropdown-divider">
-               </li>
-
-               <li>
-                 <div class="text-muted small fw-bold text-uppercase px-3">
-                   Interface
-                 </div>
-               </li>
-
-               <li>
-                 <a
-                   class="nav-link px-3 sidebar-link"
-                   data-bs-toggle="collapse"
-                   href="#layouts"
-                 >
-                   <span class="me-2 text-info"><i class="bi bi-layout-split"></i></span>
-                   <span class="text-info">Graphs</span>
-                   <span class="ms-auto ">
-                     <span  >
-                       <i class="bi bi-chevron-down right-icon"></i>
-                     </span>
-                   </span>
-                 </a>
-                 <div class="collapse" id="layouts">
-                   <ul class="navbar-nav ps-3">
-                     <li>
-                       <a href=<%= wlogs_home_path %> class="nav-link px-3 sidebar-link">
-                         <span class="me-2"
-                           ><i class="bi bi-speedometer2"></i
-                         ></span>
-                         <span>Dashboard</span>
-                       </a>
-                     </li>
-                     <li>
-                       <a href="#" class="nav-link px-3">
-                         <span class="me-2"
-                           ><i class="bi bi-speedometer2"></i
-                         ></span>
-                         <span>Reports</span>
-                       </a>
-                     </li>
-                   </ul>
-                 </div>
-               </li>
-
-
-
-               <li>
-                 <a href="#" class="nav-link px-3">
-                   <span class="me-2"><i class="bi bi-book-fill"></i></span>
-                   <span>Pages</span>
-                 </a>
-               </li>
-               <li class="my-4"><hr class="dropdown-divider bg-light" /></li>
-               <li>
-                 <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
-                   Addons
-                 </div>
-               </li>
-               <li>
-                 <a href="#" class="nav-link px-3">
-                   <span class="me-2"><i class="bi bi-graph-up"></i></span>
-                   <span>Charts</span>
-                 </a>
-               </li>
-               <li>
-                 <a href="#" class="nav-link px-3">
-                   <span class="me-2"><i class="bi bi-table"></i></span>
-                   <span>Tables</span>
-                 </a>
-               </li>
-
-
-
-             </ul>
-
-           </nav>
-
-         </div>
-       </div>
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>Saved reports</span>
+              <a class="d-flex align-items-center text-muted" href="#">
+                <span data-feather="plus-circle"></span>
+              </a>
+            </h6>
+            <ul class="nav flex-column mb-2">
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file-text"></span>
+                  Current month
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file-text"></span>
+                  Last quarter
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file-text"></span>
+                  Social engagement
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file-text"></span>
+                  Year-end sale
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
