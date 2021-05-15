@@ -1,162 +1,201 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12 fw-bold fs-3">
-      Dashboard
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12 fw-bold fs-3">
-  <%= form_with url:  wlogs_index_path, method: :get do |form| %>
-   <div class="field">
-    <%= form.label :date1 %>
-    <%= form.text_field :date1, data: {behavior: "flatpickr"} %>
+<!-- Begin Page Content -->
+               <div class="container-fluid">
 
-    <%= form.submit %>
+                   <!-- Page Heading -->
+                   <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                       <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
 
-  <% end %>
-</div>
+                   </div>
 
-</div>
-</div>
+                   <!-- Content Row -->
+                   <div class="row">
 
+                       <!-- Earnings (Monthly) Card Example -->
+                       <div class="col-xl-3 col-md-6 mb-4">
+                           <div class="card border-left-primary shadow h-100 py-2">
+                               <div class="card-body">
+                                   <div class="row no-gutters align-items-center">
+                                       <div class="col mr-2">
+                                           <div class="text-xs  font-weight-bold text-primary text-uppercase mb-1">
+                                              Total Requests</div>
+                                           <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @total %></div>
+                                       </div>
+                                       <div class="col-auto">
 
+                                           <i class="fas fa-equals fa-2x text-gray-300"></i>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
 
+                       <!-- Earnings (Monthly) Card Example -->
+                       <div class="col-xl-3 col-md-6 mb-4">
+                           <div class="card border-left-success shadow h-100 py-2">
+                               <div class="card-body">
+                                   <div class="row no-gutters align-items-center">
+                                       <div class="col mr-2">
+                                           <div class=" text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Null Requests</div>
+                                           <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @total1 %></div>
+                                       </div>
+                                       <div class="col-auto">
+                                           <i class="far fa-circle fa-2x text-gray-300"></i>
 
-    <div class="row">
-      <div class="col-md-3 mb-3">
-        <div class="card text-white bg-primary h-100">
-          <div class="card-header">Total Requests</div>
-          <div class="card-body">
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
 
-            <p class="card-text"><%= @total %></p>
-          </div>
-        </div>
+                       <!-- Earnings (Monthly) Card Example -->
+                       <div class="col-xl-3 col-md-6 mb-4">
+                           <div class="card border-left-info shadow h-100 py-2">
+                               <div class="card-body">
+                                   <div class="row no-gutters align-items-center">
+                                       <div class="col mr-2">
+                                           <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Request Time >3
+                                           </div>
+                                           <div class="row no-gutters align-items-center">
+                                               <div class="col-auto">
+                                                   <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><%= @total2 %></div>
+                                               </div>
 
-      </div>
-      <div class="col-md-3 mb-3">
-        <div class="card text-white bg-info h-100" >
-        <div class="card-header">Null Requests</div>
-          <div class="card-body">
-            <p class="card-text"><%= @total1 %></p>
-          </div>
-        </div>
+                                           </div>
+                                       </div>
+                                       <div class="col-auto" style="color: Tomato;">
+                                           <i class="fas fa-exclamation-triangle fa-2x text-danger-300"></i>
 
-      </div>
-      <div class="col-md-3 mb-3">
-        <div class="card text-white bg-danger h-100" >
-        <div class="card-header">R Time>3</div>
-          <div class="card-body">
-            <p class="card-text"><%= @total2 %></p>
-          </div>
-        </div>
-
-      </div>
-      <div class="col-md-3 mb-3">
-        <div class="card text-white bg-warning h-100"  >
-          <div class="card-header">Average RT</div>
-          <div class="card-body">
-
-
-              <p class="card-text"><%= @total3 %></p>
-
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <div class="row">
-
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-
-      <div class="card">
-        <div class="card-header">
-
-          Apdex Score
-        </div>
-        <div class="card-body">
-         <%= line_chart @apdex, xtitle: "Time", ytitle: "Apdex" %>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-
-      <div class="card">
-        <div class="card-header">
-
-          Server Throughput
-        </div>
-        <div class="card-body">
-
-<%= line_chart @data, xtitle: "Time", ytitle: "No of Request" %>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-header">
-          List of RT >3
-        </div>
-        <div class="card-body">
-          <div class="table-responsive">
-            <table
-                  id="example"
-                  class="table table-striped data-table"
-                  style="width: 100%"
-                >
-                  <thead>
-                    <tr>
-                      <th>Sr. No</th>
-                      <th>URL</th>
-                      <th>IP</th>
-                      <th>Time</th>
-                      <th>RT</th>
-
-                    </tr>
-                  </thead>
-                  <tbody>
-                      <% if @data8 %>
-                      <% count= 0%>
-                      <% @data8.each do |i| %>
-                      <tr>
-                      <% count= count+1 %>
-                      <td> <%=count %> </td>
-                      <td> <%= i.URL1 %></td>
-                      <td> <%= i.IP %></td>
-                        <td> <%= i.Time %></td>
-                      <td> <%= i.RT %></td>
-                      </tr>
-
-                      <%  end %>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
 
 
-                      <% end %>
-                  </tbody>
-                  <tfoot>
-                    <tr>
-                      <th>Sr. No</th>
-                      <th>URL</th>
-                      <th>IP</th>
-                      <th>Time</th>
-                      <th>RT</th>
 
-                    </tr>
-                  </tfoot>
-                </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+                       <!-- Pending Requests Card Example -->
+                       <div class="col-xl-3 col-md-6 mb-4">
+                           <div class="card border-left-warning shadow h-100 py-2">
+                               <div class="card-body">
+                                   <div class="row no-gutters align-items-center">
+                                       <div class="col mr-2">
+                                           <div class=" text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                              Average RT</div>
+                                           <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @total3 %></div>
+                                       </div>
+                                       <div class="col-auto">
+                                           <i class="fas fa-calculator fa-2x text-gray-300"></i>
+
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
 
 
 
 
 
 
+                     <div class="row">
+                       <div class="col-md-6 ">
 
-</div>
+                         <div class="card border border-primary">
+                           <div class="card-header border border-primary">
+
+                             <span style="color:#800080;"> Apdex Score</span>
+                           </div>
+                           <div class="card-body border border-primary">
+                            <%= line_chart @apdex, xtitle: "Time", ytitle: "Apdex" %>
+                           </div>
+                         </div>
+                       </div>
+                       <div class="col-md-6">
+
+                         <div class="card border border-primary">
+                           <div class="card-header border border-primary">
+
+
+                     <span style="color:#800080;">         Server Throughput </span>
+                           </div>
+                           <div class="card-body border border-primary">
+
+                   <%= line_chart @data, xtitle: "Time", ytitle: "No of Request" %>
+                           </div>
+                         </div>
+                       </div>
+                     </div>
+
+
+
+<br>
+
+
+
+
+
+<!-- DataTales Example -->
+                    <div class="card shadow mb-4 border border-secondary">
+                        <div class="card-header py-3  border-secondary">
+                            <h6 class="m-0 " style="align : center;"> <span style="color:#800080;">  Request Time >3</span></h6>
+                        </div>
+                        <div class="card-body border border-secondary">
+                            <div class="table-responsive">
+                                <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+
+                                      <tr>
+                                          <th>Sr. No</th>
+                                          <th>URL</th>
+                                          <th>IP</th>
+                                          <th>Time</th>
+                                          <th>RT</th>
+                                      </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <% if @data8 %>
+                                                            <% count= 0%>
+                                                            <% @data8.each do |i| %>
+                                                            <tr>
+                                                            <% count= count+1 %>
+                                                            <td> <%=count %> </td>
+                                                            <td> <%= i.URL1 %></td>
+                                                            <td> <%= i.IP %></td>
+                                                              <td> <%= i.Time %></td>
+                                                            <td> <%= i.RT %></td>
+                                                            </tr>
+
+                                                            <%  end %>
+
+
+                                                            <% end %>
+                                                        </tbody>
+                                                        <tfoot>
+                                                          <tr>
+                                                            <th>Sr. No</th>
+                                                            <th>URL</th>
+                                                            <th>IP</th>
+                                                            <th>Time</th>
+                                                            <th>RT</th>
+
+                                                          </tr>
+                                                        </tfoot>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+               </div>
+               <!-- /.container-fluid -->

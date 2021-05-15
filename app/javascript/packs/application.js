@@ -8,17 +8,13 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-
-
-
-
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
 import "bootstrap"
 import "chartkick/chart.js"
-
+import "@fortawesome/fontawesome-free/css/all"
 
 import "controllers"
 
@@ -34,4 +30,9 @@ enableTime: true,
 dateFormat: "Y-m-d H:i",
 
 })
-})
+});
+
+
+$(document).ready( function () {
+    $('#dataTable').DataTable();
+} );
