@@ -1,13 +1,23 @@
-<h1>Logs#Upload</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
 
-<%= form_tag import1_wlogs_path, multipart: true   do %>
+<!-- Begin Page Content -->
+               <div class="container-fluid">
+
+                   <!-- Page Heading -->
+                   <h1 class="h3 mb-4 text-gray-800">Log File Upload</h1>
+
+
+
+
+
+
+<%= form_tag import1_wlogs_path, class: "form-inline", multipart: true   do %>
   <%= file_field_tag :file    %>
 
 
-  <%= submit_tag "Upload Logs" ,   class: 'btn btn-primary  ' %>
+  <%= submit_tag "Upload Logs" ,   class:"btn btn-primary mb-2" %>
 <% end %>
 
+<% if false %>
 
 <%= form_tag import2_wlogs_path    do %>
 
@@ -26,3 +36,31 @@
   <%= form.submit %>
 </div>
 <% end %>
+
+
+<form class="form-inline">
+  <label class="sr-only" for="inlineFormInputName2">Name</label>
+  <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Jane Doe">
+
+  <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
+  <div class="input-group mb-2 mr-sm-2">
+    <div class="input-group-prepend">
+      <div class="input-group-text">@</div>
+    </div>
+    <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Username">
+  </div>
+
+  <div class="form-check mb-2 mr-sm-2">
+    <input class="form-check-input" type="checkbox" id="inlineFormCheck">
+    <label class="form-check-label" for="inlineFormCheck">
+      Remember me
+    </label>
+  </div>
+
+  <button type="submit" class="btn btn-primary mb-2">Submit</button>
+</form>
+
+<% end %>
+
+</div>
+<!-- /.container-fluid -->

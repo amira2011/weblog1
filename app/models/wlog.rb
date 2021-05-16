@@ -36,14 +36,68 @@ class Wlog < ApplicationRecord
       def self.import1(file)
         #  CSV.foreach(file.path, headers: true) do |row|
         #    Log.create! row.to_hash
-          items = []
+      #    items = []
 
 #items = CSV.read(file.path, headers: true)
-    CSV.foreach(file.path, headers: true) do |row|
-        items << row.to_h
+    #CSV.foreach(file.path, headers: true) do |row|
+    #    items << row.to_h
+    #    end
+    #    Wlog.import(items)
+
+    batch=[]
+    batch_size=6000
+    puts "import",  Benchmark.measure {
+
+    CSV.foreach(file.path, liberal_parsing: true, col_sep: " ") do |row|
+      date = DateTime.parse(row[3][1..11]+" "+row[3][13..-1])
+      rt1= row[10].split("\"")
+      rt1= rt1[1].to_f
+
+      u= row[5].split()
+        if u[1]
+          url_1= u[1].split('?')[0]
+        else
+          url_1 ='-'
         end
-        Wlog.import(items)
+
+      hash= {:IP => row[0], :Time => date, :URL => u[1],
+        :Status => row[6].to_i, :istatus => row[7].to_i, :RT => rt1,
+        :Method => u[0], :URL1 =>url_1
+         }
+
+      batch.push(hash)
+
+      if batch.size== batch_size
+        Wlog.import  batch
+        batch=[]
       end
+
+
+     end
+     }
+        Wlog.import  batch
+
+
+
+
+
+
+
+
+
+
+
+
+
+      end
+
+
+
+
+
+
+
+
 
 
 

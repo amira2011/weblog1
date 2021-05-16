@@ -15,13 +15,13 @@ class WlogsController < ApplicationController
             @total2= Wlog.where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" > ?',   3).count
             @total3 =Wlog.where('"Time" <= ? and "Time" >= ?', date1, date).average(:RT)
             @total3 =@total3.ceil(2)
-
+            @data7= Wlog.group(:Status).where('"Time" <= ? and "Time" >= ?', date1, date).count()
 
             @data8  =Wlog.where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" > ?',   3)
             @data  =Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date1, date).count
-            @data6= Wlog.group(:Method).where('"Time" <= ? and "Time" >= ?', date1, date).average(:RT)
+            @data6= Wlog.group(:Method).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).average(:RT)
 
-            @data4= Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date1, date).average(:RT)
+            @data4= Wlog.group(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).average(:RT)
 
 
             @apdex=  Wlog.apdex(date,date1)
@@ -38,8 +38,8 @@ class WlogsController < ApplicationController
            @total2= Wlog.where('"Time" <= ? and "Time" >= ?', date2, date1).where('"RT" > ?',   3).count
            @total3 =Wlog.where('"Time" <= ? and "Time" >= ?', date2, date1).average(:RT)
            @total3 = @total3.to_f.ceil(2)
-           @data4= Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date2, date1).where('"RT" > ?',   0.005).count
-           @data3 =Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date2, date1).average(:RT)
+           @data4= Wlog.group(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date2, date1).average(:RT)
+           @data3 =Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date1, date).average(:RT)
            @data  =Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date2, date1).count
         #  @data5=Wlog.where("RT> 5 AND methods='GET'").order("RT DESC").first(10)
           @data6= Wlog.group(:Method).where('"Time" <= ? and "Time" >= ?', date2, date1).average(:RT)

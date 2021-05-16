@@ -14,7 +14,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="<%=root_path %>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -27,7 +27,7 @@
         Interface
     </div>
 
-    <!-- Nav Item - Pages Collapse Menu -->
+    <!-- Nav Item - Pages Collapse Menu
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
@@ -41,7 +41,7 @@
                 <a class="collapse-item" href="cards.html">Cards</a>
             </div>
         </div>
-    </li>
+    </li>-->
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
@@ -54,8 +54,8 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custome Settings:</h6>
-                <a class="collapse-item" href="utilities-color.html">Edit User</a>
-                <a class="collapse-item" href="utilities-border.html">Edit RT</a>
+                <a class="collapse-item" href="<%= edit_user_registration_path %>">Edit User</a>
+                <a class="collapse-item" href="utilities-border.html">Set RT Threshold</a>
 
             </div>
         </div>
@@ -64,12 +64,12 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Heading -->
+    <!-- Heading
     <div class="sidebar-heading">
         Addons
-    </div>
+    </div> -->
 
-    <!-- Nav Item - Pages Collapse Menu -->
+    <!-- Nav Item - Pages Collapse Menu
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
             aria-expanded="true" aria-controls="collapsePages">
@@ -88,21 +88,21 @@
                 <a class="collapse-item" href="blank.html">Blank Page</a>
             </div>
         </div>
-    </li>
+    </li> -->
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="<%= wlogs_home_path %>">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
+            <span>Upload Logs</span></a>
     </li>
 
-    <!-- Nav Item - Tables -->
+    <!-- Nav Item - Tables
     <li class="nav-item">
         <a class="nav-link" href="tables.html">
             <i class="fas fa-fw fa-table"></i>
             <span>Tables</span></a>
-    </li>
+    </li>-->
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

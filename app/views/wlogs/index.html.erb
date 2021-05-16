@@ -132,6 +132,40 @@
 
 <br>
 
+<div class="row">
+  <div class="col-md-6 ">
+
+    <div class="card border border-primary">
+      <div class="card-header border border-primary">
+
+        <span style="color:#800080;"> HTTP Status </span>
+      </div>
+      <div class="card-body border border-primary">
+       <%= column_chart @data7, xtitle: "Time", ytitle: "HTTP Status" %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+
+    <div class="card border border-primary">
+      <div class="card-header border border-primary">
+
+
+<span style="color:#800080;">        Average RT by Method</span>
+      </div>
+      <div class="card-body border border-primary">
+
+<%= column_chart @data6, xtitle: "Time", ytitle: "Average Response Time" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<br>
+
 
 
 
