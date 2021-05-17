@@ -1,0 +1,20 @@
+
+
+
+
+
+  <div class="container-fluid">
+
+                     <!-- Page Heading -->
+                     <h1 class="h3 mb-4 text-gray-800">Update Response Time Threshold</h1>
+                     <h4 class="h5 mb-4 text-gray-800">Current Value of RT = <%= $RT %> </h4>
+
+                     <%= form_with do |form| %>
+                     <%= form.label :query, "RT:" %>
+                     <%= form.text_field :rt1 %>
+
+                     <%= submit_tag "Update RT" ,   class:"btn btn-primary mb-2" %>
+                     <% end %>
+
+ </div>
+                 <!-- /.container-fluid -->
