@@ -14,11 +14,11 @@ class WlogsController < ApplicationController
 
             @total2= Wlog.where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" > ?',   3).count
             @total3 =Wlog.where('"Time" <= ? and "Time" >= ?', date1, date).average(:RT)
-            @total3 =@total3.ceil(2)
+            @total3 =@total3&.ceil(2)
             @data7= Wlog.group(:Status).where('"Time" <= ? and "Time" >= ?', date1, date).count()
 
             @data8  =Wlog.where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" > ?',   3)
-            @data  =Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date1, date).count
+            @data  =Wlog.group_by_minute(:Time).where('"Time" <= ? and "Time" >= ?', date1, date).count
             @data6= Wlog.group(:Method).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).average(:RT)
 
             @data4= Wlog.group(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).average(:RT)

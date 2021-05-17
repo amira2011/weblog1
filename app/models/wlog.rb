@@ -2,32 +2,31 @@ class Wlog < ApplicationRecord
 
   def self.apdex(date, date1)
      hash= {}
-     data= Wlog.group(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).select(:Time)
-     data1= Wlog.group(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).count
-     data2= Wlog.group(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" < ?',   0.3).count
-     data3= Wlog.group(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" < ? and "RT" > ?',   1.2, 0.3).count
+     data= Wlog.group_by_minute(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).count
+     data1= Wlog.group_by_minute(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).count
+     data2= Wlog.group_by_minute(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" < ?',   0.3).count
+     data3= Wlog.group_by_minute(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" < ? and "RT" > ?',   1.2, 0.3).count
 
-     puts data
+     #puts data.size, data1.size, data2.size, data3.size
 
-    data.each do |i|
 
-     ts=data1[i.Time]
-     sc=data2[i.Time]
-     tc=data3[i.Time]
+     data.each do |i|
+        ts=data1[i[0]]
+        sc=data2[i[0]]
+        tc=data3[i[0]]
+        puts ts, sc, tc
 
 
      if sc==nil
-       sc=0
+           sc=0
      end
-      print "ts ", ts, " sc ", sc, " tc ", tc , "\n"
-      tc=tc.to_f/2
-     ap=sc.to_f+tc.to_f
-     ap=ap/ts.to_f
 
-     hash[i.Time]=ap
+     tc=tc.to_f/2
+    ap=sc.to_f+tc.to_f
+    ap=ap/ts.to_f
 
-  end
-
+    hash[i[0]]=ap
+   end
   return hash
 
    end

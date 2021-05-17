@@ -108,7 +108,7 @@
                              <span style="color:#800080;"> Apdex Score</span>
                            </div>
                            <div class="card-body border border-primary">
-                            <%= line_chart @apdex, xtitle: "Time", ytitle: "Apdex" %>
+                            <%= line_chart @apdex, xtitle: "Time", ytitle: "Apdex" ,download: true %>
                            </div>
                          </div>
                        </div>
@@ -122,7 +122,7 @@
                            </div>
                            <div class="card-body border border-primary">
 
-                   <%= line_chart @data, xtitle: "Time", ytitle: "No of Request" %>
+                   <%= line_chart @data, xtitle: "Time", ytitle: "No of Request" ,download: true%>
                            </div>
                          </div>
                        </div>
@@ -141,7 +141,7 @@
         <span style="color:#800080;"> HTTP Status </span>
       </div>
       <div class="card-body border border-primary">
-       <%= column_chart @data7, xtitle: "Time", ytitle: "HTTP Status" %>
+       <%= column_chart @data7, xtitle: "Time", ytitle: "HTTP Status" ,download: true %>
       </div>
     </div>
   </div>
@@ -155,7 +155,7 @@
       </div>
       <div class="card-body border border-primary">
 
-<%= column_chart @data6, xtitle: "Time", ytitle: "Average Response Time" %>
+<%= column_chart @data6, xtitle: "Time", ytitle: "Average Response Time" ,download: true%>
       </div>
     </div>
   </div>
