@@ -14,8 +14,7 @@ ActiveStorage.start()
 
 import "bootstrap"
 import "chartkick/chart.js"
-import "@fortawesome/fontawesome-free/css/all"
-
+ 
 import "controllers"
 
 

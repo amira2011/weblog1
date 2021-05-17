@@ -5,7 +5,7 @@
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
+                      <i class="bi bi-justify "></i>
                     </button>
 
                     <!-- Topbar Search -->
@@ -38,13 +38,13 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%= current_user.email%></span>
-                              <i class="fas fa-user"></i>
+                              <i class="bi bi-person"></i>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href= "<%= edit_user_registration_path %>" >
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                  <i class="bi bi-gear" style="color:blue"></i>
                                     Edit Profile
                                 </a>
   <!--
@@ -54,7 +54,7 @@
                                 </a>-->
 
                                 <a class="dropdown-item" href="<%=destroy_user_session_path %>" data-method="delete" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                  <i class="bi bi-box-arrow-right" style="color:blue" ></i>
                                     Logout
                                 </a>
 
