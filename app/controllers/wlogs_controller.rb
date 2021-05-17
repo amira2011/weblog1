@@ -40,7 +40,7 @@ class WlogsController < ApplicationController
            @total3 = @total3.to_f.ceil(2)
            @data4= Wlog.group(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date2, date1).average(:RT)
            @data3 =Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date1, date).average(:RT)
-           @data  =Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date2, date1).count
+           @data  =Wlog.group_by_minute(:Time).where('"Time" <= ? and "Time" >= ?', date2, date1).count
         #  @data5=Wlog.where("RT> 5 AND methods='GET'").order("RT DESC").first(10)
           @data6= Wlog.group(:Method).where('"Time" <= ? and "Time" >= ?', date2, date1).average(:RT)
            @data7= Wlog.group(:Status).where('"Time" <= ? and "Time" >= ?', date2, date1).count()
