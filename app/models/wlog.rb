@@ -1,11 +1,14 @@
 class Wlog < ApplicationRecord
 
+
+
   def self.apdex(date, date1)
      hash= {}
+
      data= Wlog.group_by_minute(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).count
      data1= Wlog.group_by_minute(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).count
-     data2= Wlog.group_by_minute(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" < ?',   0.3).count
-     data3= Wlog.group_by_minute(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" < ? and "RT" > ?',   1.2, 0.3).count
+     data2= Wlog.group_by_minute(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" < ?',   $RT).count
+     data3= Wlog.group_by_minute(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" < ? and "RT" > ?',   4 * $RT, $RT).count
 
      #puts data.size, data1.size, data2.size, data3.size
 
@@ -27,6 +30,10 @@ class Wlog < ApplicationRecord
 
     hash[i[0]]=ap
    end
+
+
+
+    
   return hash
 
    end

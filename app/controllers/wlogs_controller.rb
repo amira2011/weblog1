@@ -68,6 +68,19 @@ class WlogsController < ApplicationController
 
 
 
+  def RT
+
+
+    if params[:rt1].present?
+
+      $RT= params[:rt1]
+      $RT= $RT&.to_f
+    end
+
+  end
+
+
+
 
 
 end
