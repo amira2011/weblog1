@@ -34,10 +34,10 @@
                                 <div class="col-sm-6 mb-3 mb-sm-0">
 
                                           <% if @minimum_password_length %>
-                                          <em>(<%= @minimum_password_length %> characters minimum)</em>
+
                                           <% end %>
                                           <%= f.password_field :password, class:"form-control form-control-user", placeholder:"Password",  autocomplete: "new-password" %>
-
+                                          <em class="pl-1">(<%= @minimum_password_length %> characters minimum)</em>
 
                                   </div>
                                   <div class="col-sm-6">
@@ -50,7 +50,7 @@
                               <hr>
 
                         <% end %>
-                          <hr>
+
                           <div class="text-center">
                            <%= render "devise/shared/links" %>
                           </div>
