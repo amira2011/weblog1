@@ -14,7 +14,7 @@ ActiveStorage.start()
 
 import "bootstrap"
 import "chartkick/chart.js"
- 
+
 import "controllers"
 
 

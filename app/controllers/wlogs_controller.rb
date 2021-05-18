@@ -27,6 +27,12 @@ class WlogsController < ApplicationController
             @apdex=  Wlog.apdex(date,date1)
 
 
+            @RT_average  =Wlog.group_by_second(:Time).where('"Time" <= ? and "Time" >= ?', date1, date).average(:RT)
+            @error_rate  =Wlog.group_by_minute(:Time).where('"Time" <= ? and "Time" >= ?', date1, date).where('"Status" = ? ', "400").count
+
+
+
+
          else
            date1= (a = Wlog.first).present? ? a.Time : 1.hour.ago
            date2= date1 + 20.minutes
@@ -45,6 +51,11 @@ class WlogsController < ApplicationController
           @data6= Wlog.group(:Method).where('"Time" <= ? and "Time" >= ?', date2, date1).average(:RT)
            @data7= Wlog.group(:Status).where('"Time" <= ? and "Time" >= ?', date2, date1).count()
            @data8=Wlog.where('"Time" <= ? and "Time" >= ?', date2, date1).where('"RT" > ?',   3)
+
+
+           @RT_average  =Wlog.group_by_second(:Time).where('"Time" <= ? and "Time" >= ?', date2, date1).average(:RT)
+
+           @error_rate  =Wlog.group_by_minute(:Time).where('"Time" <= ? and "Time" >= ?', date1, date).where('"Status" = ? ', "400").count
 
          end
 
