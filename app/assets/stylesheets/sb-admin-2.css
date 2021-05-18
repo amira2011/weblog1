@@ -11285,3 +11285,9 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
+
+.bg-edit-image {
+  background: url("https://source.unsplash.com/pOUA8Xay514/600x800");
+  background-position: center;
+  background-size: cover;
+}
