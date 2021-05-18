@@ -16,6 +16,9 @@ import "bootstrap"
 import "chartkick/chart.js"
 
 import "controllers"
+require("sb/bootstrap.bundle.min")
+require("sb/sb-admin-2.min")
+
 
 
 import flatpickr from "flatpickr";
