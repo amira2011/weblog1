@@ -2,10 +2,7 @@ class ChartsController < ApplicationController
 
 
 
-  def completed_tasks
-    render json: Wlog.group_by_day(:created_at).count
-  end
-
+ 
 
 
 

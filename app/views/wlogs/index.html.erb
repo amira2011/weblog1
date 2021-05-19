@@ -31,7 +31,8 @@
                                        <div class="col mr-2">
                                            <div class="text-xs  font-weight-bold text-primary text-uppercase mb-1">
                                               Total Requests</div>
-                                           <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @total %></div>
+                                           <div class="h5 mb-0 font-weight-bold text-gray-800">
+<%=  number_with_delimiter(@Total_Requests, :delimiter => ',')     %></div>
                                        </div>
 
                                    </div>
@@ -47,7 +48,10 @@
                                        <div class="col mr-2">
                                            <div class=" text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Null Requests</div>
-                                           <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @total1 %></div>
+                                           <div class="h5 mb-0 font-weight-bold text-gray-800">
+
+<%=  number_with_delimiter(@Null_Requests, :delimiter => ',') %>
+                                           </div>
                                        </div>
 
                                    </div>
@@ -65,7 +69,7 @@
                                            </div>
                                            <div class="row no-gutters align-items-center">
                                                <div class="col-auto">
-                                                   <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><%= @total2 %>  </div>
+                                                   <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><%= @RT_Threshold_Greater_than_count %>  </div>
                                                </div>
 
                                            </div>

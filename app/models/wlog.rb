@@ -2,7 +2,7 @@ class Wlog < ApplicationRecord
 
 
 
-  def self.apdex(date, date1)
+def self.apdex(date, date1)
      hash= {}
 
      data= Wlog.group_by_minute(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).count
@@ -25,18 +25,14 @@ class Wlog < ApplicationRecord
      end
 
      tc=tc.to_f/2
-    ap=sc.to_f+tc.to_f
-    ap=ap/ts.to_f
+     ap=sc.to_f+tc.to_f
+     ap=ap/ts.to_f
 
-    hash[i[0]]=ap
+     hash[i[0]]=ap
    end
+   return hash
 
-
-
-
-  return hash
-
-   end
+end
 
 
       def self.import1(file)
@@ -84,17 +80,6 @@ class Wlog < ApplicationRecord
         Wlog.import  batch
 
 
-
-
-
-
-
-
-
-
-
-
-
       end
 
 
@@ -107,52 +92,7 @@ class Wlog < ApplicationRecord
 
 
 
-        def self.import2
 
-          batch=[]
-          batch_size=6000
-          puts "import",  Benchmark.measure {
-
-          CSV.foreach(("access.log"), liberal_parsing: true, col_sep: " ") do |row|
-            date = DateTime.parse(row[3][1..11]+" "+row[3][13..-1])
-            rt1= row[10].split("\"")
-            rt1= rt1[1].to_f
-
-            u= row[5].split()
-              if u[1]
-                url_1= u[1].split('?')[0]
-              else
-                url_1 ='-'
-              end
-
-            hash= {:IP => row[0], :Time => date, :URL => u[1],
-              :Status => row[6].to_i, :istatus => row[7].to_i, :RT => rt1,
-              :Method => u[0], :URL1 =>url_1
-               }
-
-            batch.push(hash)
-
-            if batch.size== batch_size
-              Wlog.import  batch
-              batch=[]
-            end
-
-
-           end
-           }
-              Wlog.import  batch
-
-
-
-
-
-
-
-
-
-
-
-      end
 
 
 

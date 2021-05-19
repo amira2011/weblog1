@@ -14,11 +14,11 @@ class WlogsController < ApplicationController
             $date1=date
             $date2=date1
           #  date1= date + 20.minutes
-            @total=Wlog.where('"Time" <= ? and "Time" >= ?', date1, date).count
-            @total1= Wlog.where('"RT" = ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).count
+            @Total_Requests=Wlog.where('"Time" <= ? and "Time" >= ?', date1, date).count
+            @Null_Requests= Wlog.where('"RT" = ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).count
 
-            @total2= Wlog.where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" > ?',   $RT).count
-            @total3 =Wlog.where('"Time" <= ? and "Time" >= ?', date1, date).average(:RT)
+            @RT_Threshold_Greater_than_count= Wlog.where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" > ?',   $RT).count
+            @Average_RT =Wlog.where('"Time" <= ? and "Time" >= ?', date1, date).average(:RT)
             @total3 =@total3&.ceil(2)
 
 
@@ -37,9 +37,9 @@ class WlogsController < ApplicationController
            $date1=date1
            $date2=date2
 
-           @total= Wlog.where('"Time" <= ? and "Time" >= ?', date2, date1).count
-           @total1= Wlog.where('"RT" = ?', 0).where('"Time" <= ? and "Time" >= ?', date2, date1).count
-           @total2= Wlog.where('"Time" <= ? and "Time" >= ?', date2, date1).where('"RT" > ?',   $RT).count
+           @Total_Requests= Wlog.where('"Time" <= ? and "Time" >= ?', date2, date1).count
+           @Null_Requests= Wlog.where('"RT" = ?', 0).where('"Time" <= ? and "Time" >= ?', date2, date1).count
+           @RT_Threshold_Greater_than_count= Wlog.where('"Time" <= ? and "Time" >= ?', date2, date1).where('"RT" > ?',   $RT).count
            @total3 =Wlog.where('"Time" <= ? and "Time" >= ?', date2, date1).average(:RT)
            @total3 = @total3.to_f.ceil(2)
 

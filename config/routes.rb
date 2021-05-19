@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :wlogs do
     collection { post :import1 }
-    collection { post :import2 }
+
 
     collection { post :RT }
   end
@@ -15,11 +15,11 @@ Rails.application.routes.draw do
   resources :charts, only: [] do
   collection do
     get 'server_throughput'
-    get 'completed_tasks'
+   
     get 'average_RT'
     get 'error_rate'
     get 'method_RT'
-   
+
 
   end
 end
