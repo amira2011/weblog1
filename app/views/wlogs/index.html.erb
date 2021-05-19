@@ -154,7 +154,8 @@
                                  <!-- Card Body -->
                                  <div class="card-body">
 
-                                          <%= line_chart @RT_average, xtitle: "Time", ytitle: "RT" ,download: true %>
+                                   <%= line_chart average_RT_charts_path %>
+
                                  </div>
                              </div>
                          </div>
@@ -243,7 +244,9 @@
             <!-- Card Body -->
             <div class="card-body ">
                 <div class="chart-pie pt-4 pb-2">
-                  <%= line_chart @server_throughput, xtitle: "Time", ytitle: "No of Request" ,download: true%>
+                  <%= line_chart server_throughput_charts_path %>
+
+
                 </div>
 
             </div>
@@ -275,7 +278,7 @@
             <!-- Card Body -->
             <div class="card-body ">
                 <div class="chart-pie pt-4 pb-2">
-                  <%= line_chart @error_rate, xtitle: "Time", ytitle: "No of Request" ,download: true%>
+                <%= line_chart error_rate_charts_path %>
                 </div>
 
             </div>
@@ -334,9 +337,9 @@
                                                  </tr>
                                                                    </thead>
                                                                    <tbody>
-                                                                       <% if @data8 %>
+                                                                       <% if @DataTable_data %>
                                                                        <% count= 0%>
-                                                                       <% @data8.each do |i| %>
+                                                                       <% @DataTable_data.each do |i| %>
                                                                        <tr>
                                                                        <% count= count+1 %>
 
@@ -388,7 +391,7 @@
                                  <!-- Card Body -->
                                  <div class="card-body ">
                                      <div class="chart-pie pt-4 pb-2">
-                                         <%= column_chart @data6, xtitle: "Time", ytitle: "No of Request" ,download: true%>
+                                         <%= column_chart method_RT_charts_path %>
                                      </div>
 
                                  </div>

@@ -11,6 +11,8 @@ class WlogsController < ApplicationController
             @date_to = params[:date2]
             date=DateTime.parse(@date)
             date1=DateTime.parse(@date_to)
+            $date1=date
+            $date2=date1
           #  date1= date + 20.minutes
             @total=Wlog.where('"Time" <= ? and "Time" >= ?', date1, date).count
             @total1= Wlog.where('"RT" = ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).count
@@ -18,20 +20,12 @@ class WlogsController < ApplicationController
             @total2= Wlog.where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" > ?',   $RT).count
             @total3 =Wlog.where('"Time" <= ? and "Time" >= ?', date1, date).average(:RT)
             @total3 =@total3&.ceil(2)
-            @data7= Wlog.group(:Status).where('"Time" <= ? and "Time" >= ?', date1, date).count()
 
-            @server_throughput  =Wlog.group_by_minute(:Time).where('"Time" <= ? and "Time" >= ?', date1, date).count
-            @data6= Wlog.group(:Method).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).average(:RT)
-
-            @data4= Wlog.group(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).average(:RT)
 
 
             @apdex=  Wlog.apdex(date,date1)
 
-            @data8  =Wlog.where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" > ?',   $RT)
-
-            @RT_average  =Wlog.group_by_second(:Time).where('"Time" <= ? and "Time" >= ?', date1, date).average(:RT)
-            @error_rate  =Wlog.group_by_minute(:Time).where('"Time" <= ? and "Time" >= ?', date1, date).where('"Status" = ? ', "400").count
+            @DataTable_data=Wlog.where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" > ?',   $RT)
 
 
           }
@@ -40,7 +34,8 @@ class WlogsController < ApplicationController
            date1= (a = Wlog.first).present? ? a.Time : 1.hour.ago
            date2= date1 + 20.minutes
 
-
+           $date1=date1
+           $date2=date2
 
            @total= Wlog.where('"Time" <= ? and "Time" >= ?', date2, date1).count
            @total1= Wlog.where('"RT" = ?', 0).where('"Time" <= ? and "Time" >= ?', date2, date1).count
@@ -48,21 +43,15 @@ class WlogsController < ApplicationController
            @total3 =Wlog.where('"Time" <= ? and "Time" >= ?', date2, date1).average(:RT)
            @total3 = @total3.to_f.ceil(2)
 
-           @data3 =Wlog.group(:Time).where('"Time" <= ? and "Time" >= ?', date2, date1).average(:RT)
-           @server_throughput  =Wlog.group_by_minute(:Time).where('"Time" <= ? and "Time" >= ?', date2, date1).count
-        #  @data5=Wlog.where("RT> 5 AND methods='GET'").order("RT DESC").first(10)
-          @data6= Wlog.group(:Method).where('"Time" <= ? and "Time" >= ?', date2, date1).average(:RT)
-           #@data7= Wlog.group(:Status).where('"Time" <= ? and "Time" >= ?', date2, date1).count()
 
-           @data4= Wlog.group(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date2, date1).average(:RT)
+
+
 
            @apdex= Wlog.apdex(date1,date2)
-           @data8=Wlog.where('"Time" <= ? and "Time" >= ?', date2, date1).where('"RT" > ?',   $RT)
+           @DataTable_data=Wlog.where('"Time" <= ? and "Time" >= ?', date2, date1).where('"RT" > ?',   $RT)
 
 
-           @RT_average  =Wlog.group_by_second(:Time).where('"Time" <= ? and "Time" >= ?', date2, date1).average(:RT)
 
-           @error_rate  =Wlog.group_by_minute(:Time).where('"Time" <= ? and "Time" >= ?', date2, date1).where('"Status" = ? ', "400").count
 
          end
 

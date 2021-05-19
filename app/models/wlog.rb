@@ -17,7 +17,7 @@ class Wlog < ApplicationRecord
         ts=data1[i[0]]
         sc=data2[i[0]]
         tc=data3[i[0]]
-       
+
 
 
      if sc==nil
