@@ -7,8 +7,8 @@ class Wlog < ApplicationRecord
 
      data= Wlog.group_by_minute(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).count
      data1= Wlog.group_by_minute(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).count
-     data2= Wlog.group_by_minute(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" < ?',   $RT).count
-     data3= Wlog.group_by_minute(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" < ? and "RT" > ?',   4 * $RT, $RT).count
+     data2= Wlog.group_by_minute(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" < ?',   0.3).count
+     data3= Wlog.group_by_minute(:Time).where('"RT" != ?', 0).where('"Time" <= ? and "Time" >= ?', date1, date).where('"RT" < ? and "RT" > ?',   1.2, 0.3).count
 
      #puts data.size, data1.size, data2.size, data3.size
 
@@ -17,7 +17,7 @@ class Wlog < ApplicationRecord
         ts=data1[i[0]]
         sc=data2[i[0]]
         tc=data3[i[0]]
-        puts ts, sc, tc
+       
 
 
      if sc==nil
@@ -33,7 +33,7 @@ class Wlog < ApplicationRecord
 
 
 
-    
+
   return hash
 
    end

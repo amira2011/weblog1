@@ -7,7 +7,9 @@
                          class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                          <div class="input-group">
                            <%= form_with url:  wlogs_index_path, method: :get do |form| %>
-                           <%= form.text_field :date1, placeholder:'Select Date', data: {behavior: "flatpickr"} %>
+                           <%= form.text_field :date1, placeholder:'From Date', data: {behavior: "flatpickr"} %>
+                           <%= form.text_field :date2, placeholder:'To Date',class:'ml-1', data: {behavior: "flatpickr"} %>
+
                            <%= form.submit  value:'Search', class:'btn btn-primary fas fa-search fa-sm   ml-1'  %>
 
                            <%end %>
@@ -31,10 +33,7 @@
                                               Total Requests</div>
                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @total %></div>
                                        </div>
-                                       <div class="col-auto">
 
-                                          <i class="bi bi-file-plus" style="font-size: 2rem; color: cornflowerblue;"></i>
-                                       </div>
                                    </div>
                                </div>
                            </div>
@@ -50,10 +49,7 @@
                                                 Null Requests</div>
                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @total1 %></div>
                                        </div>
-                                       <div class="col-auto">
-                                          <i class="bi bi-exclamation-circle" style="font-size: 2rem; color: cornflowerblue;"></i>
 
-                                       </div>
                                    </div>
                                </div>
                            </div>
@@ -65,7 +61,7 @@
                                <div class="card-body">
                                    <div class="row no-gutters align-items-center">
                                        <div class="col mr-2">
-                                           <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">RT >3 (Threshold <%= $RT %>)
+                                           <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> RT >  <%= $RT %>
                                            </div>
                                            <div class="row no-gutters align-items-center">
                                                <div class="col-auto">
@@ -74,10 +70,11 @@
 
                                            </div>
                                        </div>
+                                        <!--
                                        <div class="col-auto">
                                           <i class="bi bi-patch-question-fill" style="font-size: 2rem; color: cornflowerblue;"></i>
 
-                                       </div>
+                                       </div>-->
                                    </div>
                                </div>
                            </div>
@@ -92,12 +89,10 @@
                                    <div class="row no-gutters align-items-center">
                                        <div class="col mr-2">
                                            <div class=" text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                              Average RT</div>
-                                           <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @total3 %></div>
+                                              Average RT </div>
+                                           <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @total3 %> secs</div>
                                        </div>
-                                       <div class="col-auto">
-                                            <i class="bi bi-calculator-fill " style="font-size: 2rem; color: cornflowerblue;"></i>
-                                       </div>
+
                                    </div>
                                </div>
                            </div>
@@ -248,7 +243,7 @@
             <!-- Card Body -->
             <div class="card-body ">
                 <div class="chart-pie pt-4 pb-2">
-                  <%= line_chart @data, xtitle: "Time", ytitle: "No of Request" ,download: true%>
+                  <%= line_chart @server_throughput, xtitle: "Time", ytitle: "No of Request" ,download: true%>
                 </div>
 
             </div>
@@ -322,6 +317,8 @@
                                          </div>
                                      </div>
                                  </div>
+
+                                 <% puts "Jtable",  Benchmark.measure { %>
                                  <!-- Card Body -->
                                  <div class="card-body">
 
@@ -363,6 +360,8 @@
                                  </div>
                              </div>
                          </div>
+
+                         <% } %>
 
                          <!-- Pie Chart -->
                          <div class="col-xl-5 col-lg-5">
@@ -412,6 +411,3 @@
 
 </div>
 <!-- /.container-fluid -->
-
-
- 

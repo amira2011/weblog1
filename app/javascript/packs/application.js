@@ -20,6 +20,8 @@ require("sb/bootstrap.bundle.min")
 require("sb/sb-admin-2.min")
 
 
+require("sb/jquery.easing.min")
+
 
 import flatpickr from "flatpickr";
 require("flatpickr/dist/flatpickr.css")
